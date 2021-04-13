@@ -1,3 +1,5 @@
 # Ignoring class files
 *.class
 
+# Ignoring any txt files
+*.txt
