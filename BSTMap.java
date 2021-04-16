@@ -105,6 +105,17 @@ public class BSTMap<K,V> implements MapSet<K,V> {
         }
     }
 
+    // Method returns the depth of the BST
+    public int getDepth(){
+
+        if (this.root == null){
+            return 0;
+        }
+        else{
+            return this.root.getDepth();
+        }
+    }
+
     // Method clears the BST
     @Override
     public void clear() {
@@ -327,6 +338,31 @@ public class BSTMap<K,V> implements MapSet<K,V> {
             return size;
         }
 
+        // Method returns the depth of the tree
+        public int getDepth(){
+
+            // Initializing the left subtree depth
+            int leftDepth = 0;
+            // Initializing the right subtree depth
+            int rightDepth = 0;
+
+            if (this.left != null){
+                leftDepth = this.left.getDepth();
+            }
+
+            if (this.right != null){
+                rightDepth = this.right.getDepth();
+            }
+
+            // Compare both left and right depths and pick the largest one
+            if (leftDepth > rightDepth){
+                return leftDepth + 1;
+            }
+            else{
+                return rightDepth + 1;
+            }
+        }
+
         // Method overrides the toString method for every node
         // Meant to print a BST rotated 90 degrees ccw
         public String toString(String indent) {
@@ -358,6 +394,9 @@ public class BSTMap<K,V> implements MapSet<K,V> {
 
         // Testing toString method 
         System.out.println(test);
+
+        // Testing depth method
+        System.out.println("The tree's depth is (3): " + test.getDepth());
 
         // Testing get methods
         System.out.println("Returning value for key A: "  + test.get("A"));

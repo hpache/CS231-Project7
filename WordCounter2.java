@@ -44,6 +44,9 @@ public class WordCounter2 {
             FileReader reader = new FileReader(filename);
             BufferedReader buffer = new BufferedReader(reader);
 
+            // Resetting the word count to 0
+            this.wordCount = 0;
+
             // Initializing arraylist to hold all the words
             ArrayList<String> allWords = new ArrayList<String>();
 
@@ -133,6 +136,9 @@ public class WordCounter2 {
 
     // Method returns the unique word count
     public int getUniqueWordCount() { return this.wordMap.size(); }
+
+    // Method returns the word map
+    public MapSet<String,Integer> getMap() { return this.wordMap; }
 
     // Method returns the count for a given word
     // returns 0 if the given word is not in the map

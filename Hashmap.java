@@ -71,6 +71,7 @@ public class Hashmap<K,V> implements MapSet<K,V> {
         // The current threshold is set to 80% usage
         if (this.numSlots > (this.data.length * 0.8)){
             this.extend();
+            this.numberCollisions = 0;
         }
 
         // Get the index for the key
@@ -81,11 +82,17 @@ public class Hashmap<K,V> implements MapSet<K,V> {
 
             // Get current linked list 
             MapNode currentData = (MapNode) this.data[index];
+
+            // Check if that key is alread in the linked list 
+            if (currentData.containsKey(new_key)){
+
+                // Add one to number of collisions if this is the 
+                // first time that the key is added
+                this.numberCollisions += 1;
+            }
+
             // run the add method for the linked list
             currentData.add(new_key, new_value);
-
-            // Add one to the number of collisions
-            this.numberCollisions += 1;
 
             return new_value;
         }
@@ -208,7 +215,6 @@ public class Hashmap<K,V> implements MapSet<K,V> {
     }
 
     // Method returns the number of unique keys in the hashmap
-    // Has O(n) which is not good!!!
     @Override
     public int size() {
         
@@ -232,9 +238,13 @@ public class Hashmap<K,V> implements MapSet<K,V> {
         return totalSize;
     }
 
+    // Method returns the number of collisions
+    public int getNumberCollisionts() { return this.numberCollisions; }
+
     // Method empties the data array
     @Override
     public void clear() { this.data = new Object[this.data.length]; }
+
 
 
 
@@ -329,7 +339,7 @@ public class Hashmap<K,V> implements MapSet<K,V> {
 
             // Checks the next node if it isn't null
             if (this.next != null){
-                return size + this.next.size();
+                size += this.next.size();
             }
 
             return size;
