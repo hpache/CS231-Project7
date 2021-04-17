@@ -99,8 +99,8 @@
         // Creating arraylist of words
         generator.getWords();
 
-        // Creating 1000 text files
-        for (int i = 0; i < 1000; i++) {
+        // Creating 9000 text files
+        for (int i = 999; i < 6000; i++) {
 
             // Creating a standard format 
             String filenameFormat = "wordData-%s.txt";
