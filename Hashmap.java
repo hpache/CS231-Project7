@@ -69,7 +69,7 @@ public class Hashmap<K,V> implements MapSet<K,V> {
 
         // Checking if the array needs to be extended
         // The current threshold is set to 80% usage
-        if (this.numSlots > (this.data.length * 0.8)){
+        if (this.numSlots > (this.data.length * 0.3)){
             this.extend();
             this.numberCollisions = 0;
         }

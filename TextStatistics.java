@@ -8,7 +8,7 @@
  import java.io.IOException;
  import java.io.FileWriter;
  import java.util.ArrayList;
-import java.io.File;
+ import java.io.File;
 
 
 public class TextStatistics {
@@ -152,15 +152,9 @@ public class TextStatistics {
                 // Getting arraylist of words from file
                 ArrayList<String> words = tree.readWords(filename);
 
-                // Getting initial time
-                double t_0 = System.currentTimeMillis();
-                // Building word map
-                tree.buildMap(words);
-                // Getting final time
-                double t_f = System.currentTimeMillis();
+                // Building word map and getting the time in ms
+                double t = tree.buildMap(words) * 1e-06;
 
-                // Calculating time elapsed
-                double t = t_f - t_0;
                 // Getting total word count
                 int total = tree.getTotalWordCount();
                 // Getting unique word count
@@ -229,15 +223,9 @@ public class TextStatistics {
                 // Creating arraylist of words from data file
                 ArrayList<String> words = counter.readWords(filename);
 
-                // Getting initial time
-                double t_0 = System.currentTimeMillis();
-                // Building word map
-                counter.buildMap(words);
-                // Getting final time
-                double t_f = System.currentTimeMillis();
+                // Building word map and getting the time elapsed in ms
+                double t = counter.buildMap(words) * 1e-06;
 
-                // Calculating time elapsed
-                double t = t_f - t_0;
                 // Getting total word count
                 int total = counter.getTotalWordCount();
                 // Getting unique word count
@@ -268,10 +256,10 @@ public class TextStatistics {
 
     public static void main(String[] args) {
         
-        // timeComplexity("hashmap");
+        timeComplexity("hashmap");
         // timeComplexity("bst");
         // bstStatistics();
-        hashmapStatistics();
+        //hashmapStatistics();
     }
     
 }

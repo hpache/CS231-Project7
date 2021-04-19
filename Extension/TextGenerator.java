@@ -100,7 +100,7 @@
         generator.getWords();
 
         // Creating 9000 text files
-        for (int i = 999; i < 6000; i++) {
+        for (int i = 999; i < 10000; i++) {
 
             // Creating a standard format 
             String filenameFormat = "wordData-%s.txt";

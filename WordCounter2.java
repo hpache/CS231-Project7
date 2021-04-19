@@ -290,5 +290,13 @@ public class WordCounter2 {
 
         // Testing the writeWordCount method
         test.writeWordCountFile("count_test1.txt");
+
+        // Testing the BST map
+        WordCounter2 bst = new WordCounter2("bst");
+        bst.buildMap(words);
+
+        // Comparing total word count and unique word count
+        System.out.println("Total word count (24): " + bst.getTotalWordCount());
+        System.out.println("Unique word count (10): " + bst.getUniqueWordCount());
     }
 }
